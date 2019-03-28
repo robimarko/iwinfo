@@ -38,7 +38,8 @@
 #define IWINFO_CIPHER_WEP104 (1 << 5)
 #define IWINFO_CIPHER_AESOCB (1 << 6)
 #define IWINFO_CIPHER_CKIP   (1 << 7)
-#define IWINFO_CIPHER_COUNT  8
+#define IWINFO_CIPHER_GCMP   (1 << 8)
+#define IWINFO_CIPHER_COUNT  9
 
 #define IWINFO_KMGMT_NONE    (1 << 0)
 #define IWINFO_KMGMT_8021x   (1 << 1)

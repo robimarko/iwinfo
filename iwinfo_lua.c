@@ -70,6 +70,9 @@ static char * iwinfo_crypto_print_ciphers(int ciphers)
 	if (ciphers & IWINFO_CIPHER_CKIP)
 		pos += sprintf(pos, "CKIP, ");
 
+	if (ciphers & IWINFO_CIPHER_GCMP)
+		pos += sprintf(pos, "GCMP, ");
+
 	if (!ciphers || (ciphers & IWINFO_CIPHER_NONE))
 		pos += sprintf(pos, "NONE, ");
 

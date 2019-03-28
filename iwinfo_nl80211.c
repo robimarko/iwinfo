@@ -1536,6 +1536,8 @@ static int nl80211_get_encryption(const char *ifname, char *buf)
 				c->pair_ciphers |= IWINFO_CIPHER_WEP40;
 			else if (strstr(wpa_pairwise, "WEP-104"))
 				c->pair_ciphers |= IWINFO_CIPHER_WEP104;
+			else if (strstr(wpa_pairwise, "GCMP"))
+				c->pair_ciphers |= IWINFO_CIPHER_GCMP;
 
 			if (strstr(wpa_groupwise, "TKIP"))
 				c->group_ciphers |= IWINFO_CIPHER_TKIP;
@@ -1547,6 +1549,8 @@ static int nl80211_get_encryption(const char *ifname, char *buf)
 				c->group_ciphers |= IWINFO_CIPHER_WEP40;
 			else if (strstr(wpa_groupwise, "WEP-104"))
 				c->group_ciphers |= IWINFO_CIPHER_WEP104;
+			else if (strstr(wpa_groupwise, "GCMP"))
+				c->group_ciphers |= IWINFO_CIPHER_GCMP;
 
 			if (strstr(wpa_key_mgmt, "WPA2"))
 				c->wpa_version = 2;
@@ -1603,6 +1607,9 @@ static int nl80211_get_encryption(const char *ifname, char *buf)
 
 			if (strstr(wpa_pairwise, "CCMP"))
 				c->pair_ciphers |= IWINFO_CIPHER_CCMP;
+
+			if (strstr(wpa_pairwise, "GCMP"))
+				c->pair_ciphers |= IWINFO_CIPHER_GCMP;
 
 			if (strstr(wpa_pairwise, "NONE"))
 				c->pair_ciphers |= IWINFO_CIPHER_NONE;
@@ -2152,6 +2159,9 @@ static void nl80211_get_scancrypto(const char *spec,
 
 		if (strstr(spec, "WEP-104"))
 			c->pair_ciphers |= IWINFO_CIPHER_WEP104;
+
+		if (strstr(spec, "GCMP"))
+			c->pair_ciphers |= IWINFO_CIPHER_GCMP;
 
 		c->group_ciphers = c->pair_ciphers;
 	}
